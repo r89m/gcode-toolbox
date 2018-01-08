@@ -8,4 +8,5 @@ env:
   - PACKAGE=gcode-toolbox-cli
 
 script:
+  - lerna run build --scope $PACKAGE
   - lerna run test --scope $PACKAGE
