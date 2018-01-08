@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "lts/*"
+  - "8"
+
+env:
+  - PACKAGE=gcode-toolbox-core
+  - PACKAGE=gcode-toolbox-cli
+
+script:
+  - lerna run test --scope $PACKAGE
