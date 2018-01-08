@@ -1,0 +1,17 @@
+{
+  "name": "gcode-toolbox-core",
+  "version": "1.0.0",
+  "description": "Description",
+  "main": "index.js",
+  "author": "Richard Miles",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc --outDir dist",
+    "test": "jasmine-ts src/**/*.spec.ts"
+  },
+  "devDependencies": {
+    "jasmine-ts": "^0.2.1",
+    "typescript": "^2.6.2"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "gcode-toolbox-cli",
+  "version": "1.0.0",
+  "description": "GCode Toolbox Command Line Interface",
+  "main": "index.js",
+  "author": "Richard Miles",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --outDir dist",
+    "test": "jasmine-ts src/**/*.spec.ts"
+  },
+  "bin": {
+    "gcode-toolbox": "./bin/main.js"
+  },
+  "devDependencies": {
+    "jasmine-ts": "^0.2.1",
+    "typescript": "^2.6.2"
+  }
+}
