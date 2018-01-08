@@ -11,6 +11,7 @@
     "test": "jasmine-ts src/**/*.spec.ts"
   },
   "devDependencies": {
+    "@types/jasmine": "^2.8.3",
     "jasmine-ts": "^0.2.1",
     "typescript": "^2.6.2"
   }
