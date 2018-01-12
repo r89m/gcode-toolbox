@@ -1,12 +1,10 @@
-import {GCodeFile} from "../../../../gcode/src/gcode-file";
+export interface Transform<L> {
 
-export interface Transform {
-
-  transform(incoming: GCodeFile): TransformResult;
+    transform(incoming: L[]): TransformResult<L>
 }
 
-export class TransformResult {
+export class TransformResult<L> {
 
-    readonly result: GCodeFile;
+    readonly result: L[];
     readonly status?: any;
 }
