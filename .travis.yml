@@ -4,9 +4,9 @@ node_js:
   - "8"
 
 env:
-  - PACKAGE=gcode-toolbox-core
   - PACKAGE=gcode-toolbox-cli
   - PACKAGE=gcode-toolbox-gcode
+  - PACKAGE=gcode-toolbox-process
 
 script:
   - lerna run build --scope $PACKAGE

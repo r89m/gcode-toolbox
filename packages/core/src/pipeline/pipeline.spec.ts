@@ -1,7 +1,0 @@
-
-describe('Pipeline Test', () => {
-
-    it('', () => {
-
-    });
-});
