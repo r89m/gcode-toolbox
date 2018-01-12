@@ -1,10 +1,10 @@
 import {Transform} from "../transform";
-import {GCodeFile} from "../../../gcode/gcode-file";
+import {GCodeFile} from "../../../../../gcode/src/gcode-file";
 import {TransformResult} from "../transform";
 import {ReplaceableIterator} from "../../../util/replaceable.iterator";
-import {SimpleGcodeFile} from "../../../gcode/simple.gcode-file";
-import {Line, LineType} from "../../../gcode/line/line";
-import {MoveRapid} from "../../../gcode/line/move-linear.line";
+import {SimpleGcodeFile} from "../../../../../gcode/src/simple.gcode-file";
+import {Line, LineType} from "../../../../../gcode/src/line/line";
+import {MoveRapid} from "../../../../../gcode/src/line/move-linear.line";
 
 export class EnsureFirstRapidHasSensibleFeedrateTransform implements Transform {
 

@@ -1,5 +1,5 @@
 import {Analysis} from '../analysis';
-import {GCodeFile} from "../../../gcode/gcode-file";
+import {GCodeFile} from "../../../../../gcode/src/gcode-file";
 
 export class CycleTimeAnalysis implements Analysis {
 

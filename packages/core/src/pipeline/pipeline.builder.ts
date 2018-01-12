@@ -1,6 +1,6 @@
 import {Transform} from "../process/transform/transform";
 import {Analysis} from "../process/analysis/analysis";
-import {GCodeFile} from "../gcode/gcode-file";
+import {GCodeFile} from "../../../gcode/src/gcode-file";
 import {TransformResult} from "../process/transform/transform";
 import {Pipeline} from "./pipeline";
 import {Generator} from "../process/generator/generator";

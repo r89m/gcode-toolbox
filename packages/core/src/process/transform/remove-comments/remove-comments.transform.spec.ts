@@ -1,5 +1,5 @@
-import {SimpleGcodeFile} from "../../../gcode/simple.gcode-file";
-import {GCodeFile} from "../../../gcode/gcode-file";
+import {SimpleGcodeFile} from "../../../../../gcode/src/simple.gcode-file";
+import {GCodeFile} from "../../../../../gcode/src/gcode-file";
 import {RemoveCommentsTransform} from "./remove-comments.transform";
 
 describe("Remove Comments Transform", () => {

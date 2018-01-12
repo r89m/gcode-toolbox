@@ -1,5 +1,5 @@
 import {EnsureFirstRapidHasSensibleFeedrateTransform} from "./ensure-first-rapid-has-sensible-feedrate.transform";
-import {SimpleGcodeFile} from "../../../gcode/simple.gcode-file";
+import {SimpleGcodeFile} from "../../../../../gcode/src/simple.gcode-file";
 
 describe("Ensure first move has sensible feedrate Transform", () => {
 

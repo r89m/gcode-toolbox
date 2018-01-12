@@ -6,6 +6,7 @@ node_js:
 env:
   - PACKAGE=gcode-toolbox-core
   - PACKAGE=gcode-toolbox-cli
+  - PACKAGE=gcode-toolbox-gcode
 
 script:
   - lerna run build --scope $PACKAGE
