@@ -1,14 +1,21 @@
-import {MinimiseRapidsTransform} from '../process/transform/minimise-rapids/minimise-rapids.transform';
 import {Generator} from "../process/generator/generator";
 import {Transform} from "../process/transform/transform";
 
-export class Pipeline<I> {
+export class Pipeline {
 
-  constructor(private generator:Generator<I>, private transforms:Transform[]){}
+    constructor(private generator: Generator, private transforms: Transform[]) {
+    }
 
-  do():void {
+    run(filename:string, source: Blob): void {
 
-    new MinimiseRapidsTransform()
+        let value = this.generator.generate(filename, source);
 
-  }
+        for (let transform of this.transforms) {
+            const result = transform.transform(value);
+            value = result.result;
+            if (result.status) {
+                console.log(result.status)
+            }
+        }
+    }
 }
