@@ -1,9 +1,7 @@
-import {GCodeFile} from "../../../../../gcode/src/gcode-file";
-import {SimpleGcodeFile} from "../../../../../gcode/src/simple.gcode-file";
 import {Transform} from "../transform";
 import {TransformResult} from "../transform";
 
-export class RemoveCommentsTransform implements Transform {
+export class RemoveCommentsTransform implements Transform<string> {
 
     private readonly LINE_COMMENT_MARKERS = [
         "//",
@@ -15,12 +13,12 @@ export class RemoveCommentsTransform implements Transform {
         new BlockCommentBounds("(", ")")
     ];
 
-    transform(incoming: GCodeFile): TransformResult {
+    transform(incoming: string[]): TransformResult<string> {
 
         let blockCommentEndDetector: BlockCommentEndDetector;
         let outgoingLines: string[] = [];
 
-        for(let line of incoming.getLines()) {
+        for(let line of incoming) {
             const lineCommentStart = this.detectLineComment(line);
             if (lineCommentStart > -1) {
                 outgoingLines.push(line.substr(0, lineCommentStart));
@@ -52,7 +50,7 @@ export class RemoveCommentsTransform implements Transform {
         }
 
         return {
-            result: new SimpleGcodeFile(outgoingLines)
+            result: outgoingLines
         }
     }
 

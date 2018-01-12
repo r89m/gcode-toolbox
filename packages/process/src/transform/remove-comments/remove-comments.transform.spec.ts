@@ -1,11 +1,9 @@
-import {SimpleGcodeFile} from "../../../../../gcode/src/simple.gcode-file";
-import {GCodeFile} from "../../../../../gcode/src/gcode-file";
 import {RemoveCommentsTransform} from "./remove-comments.transform";
 
 describe("Remove Comments Transform", () => {
 
     const transform = function(input:string[]):string[] {
-        return new RemoveCommentsTransform().transform(new SimpleGcodeFile(input)).result.getLines();
+        return new RemoveCommentsTransform().transform(input).result;
     };
 
     it("should handle cases where no comments are present", () => {
