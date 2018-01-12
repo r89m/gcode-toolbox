@@ -1,7 +1,7 @@
 import {GCodeFile} from "../../../gcode/gcode-file";
 import {SimpleGcodeFile} from "../../../gcode/simple.gcode-file";
 import {Transform} from "../transform";
-import {TransformResult} from "../transform-result";
+import {TransformResult} from "../transform";
 
 export class RemoveCommentsTransform implements Transform {
 
