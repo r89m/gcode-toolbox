@@ -1,4 +1,4 @@
-import {GCodeFile} from "../../../../gcode/src/gcode-file";
+import {GCodeFile} from "../../../gcode/src/gcode-file";
 
 export interface Generator {
 

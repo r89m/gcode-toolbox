@@ -9,12 +9,8 @@ describe("Default parser", () => {
 
     const parser = new DefaultParser();
 
-    const flatMap = (f, xs) =>
-        xs.reduce((acc, x) =>
-            acc.concat(f(x)), []);
-
     const parse = function(lines:string[]):Line[] {
-        return flatMap(line => parser.parse(line), lines);
+        return parser.parse(lines);
     };
 
     it("should be able to parse a simple file", () => {

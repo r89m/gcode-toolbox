@@ -8,6 +8,8 @@ import {DwellLine} from "../line/dwell.line";
 import {SpindleDirection, SpindleOffLine, SpindleOnLine} from "../line/spindle.line";
 import {FanOffLine, FanOnLine} from "../line/fan-control.line";
 
+const flatMap = require("array.prototype.flatmap");
+
 export class DefaultParser implements Parser {
 
     private static readonly LINE_PARSER_PATTERN = new RegExp("^(N ?([0-9]{1,10}) ?)?([GMT])([0-9.]{1,5}) ?((.*?)([GMT].*)|(.*))", "i");
@@ -19,7 +21,11 @@ export class DefaultParser implements Parser {
     private static readonly S_PARSER_PATTERN = new RegExp(".*(S ?([0-9\.]+))", "i");
     private static readonly P_PARSER_PATTERN = new RegExp(".*(P ?([0-9\.]+))", "i");
 
-    parse(line: string): Line[] {
+    parse(lines:string[]): Line[] {
+        return flatMap(lines, line => this.parseLine(line));
+    }
+
+    protected parseLine(line: string): Line[] {
 
         const lines: Line[] = [];
 
@@ -32,7 +38,7 @@ export class DefaultParser implements Parser {
                 args: lineElements[5],
                 rawLine: line
             };
-            lines.push(this.parseLine(command));
+            lines.push(this.parseCommand(command));
 
             line = lineElements[7];
         }
@@ -40,7 +46,7 @@ export class DefaultParser implements Parser {
         return lines;
     }
 
-    parseLine(command: CommandElements): Line {
+    protected parseCommand(command: CommandElements): Line {
 
         const actionLetter = command.letter;
         const actionNumber = command.number;
