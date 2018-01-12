@@ -1,6 +1,8 @@
 import {GCodeFile} from "../../gcode/gcode-file";
 
-export interface Generator<I> {
+export interface Generator {
 
-    generate(input:I):GCodeFile;
+    supportedExtensions():string[];
+
+    generate(filename: string, input: Blob):GCodeFile;
 }
