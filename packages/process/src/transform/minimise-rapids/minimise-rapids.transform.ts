@@ -1,10 +1,9 @@
-import {Transform} from '../transform';
-import {TransformResult} from '../transform';
-import {GCodeFile} from "../../../../gcode/src/gcode-file";
+import {Transform, TransformResult} from '../transform';
+import {Line} from "../../../../gcode/src/line/line";
 
-export class MinimiseRapidsTransform implements Transform {
+export class MinimiseRapidsTransform implements Transform<Line> {
 
-  transform(incoming: GCodeFile): TransformResult {
+  transform(incoming: Line[]): TransformResult<Line> {
     return {
       result : incoming
     };

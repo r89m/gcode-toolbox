@@ -1,5 +1,5 @@
-import {GCodeFile} from "../../../gcode/src/gcode-file";
+import {Line} from "../../../gcode/src/line/line";
 
 export interface Analysis {
-  analyse(incoming: GCodeFile): any;
+  analyse(incoming: Line[]): any;
 }
