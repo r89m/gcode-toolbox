@@ -2,12 +2,12 @@ import {Line, LineType} from './line';
 
 abstract class MoveLinearLine extends Line {
 
-  constructor(private moveType: MoveType,
-              private x?: number,
-              private y?: number,
-              private z?: number,
-              private feedRate?: number,
-              comment: string = '') {
+  constructor(public readonly moveType: MoveType,
+              public readonly x?: number,
+              public readonly y?: number,
+              public readonly z?: number,
+              public readonly feedRate?: number,
+              comment?: string) {
     super(LineType.MOVE_LINEAR, comment);
   }
 
@@ -45,14 +45,12 @@ abstract class MoveLinearLine extends Line {
 }
 
 export class MoveRapid extends MoveLinearLine {
-
   constructor(x?: number, y?: number, z?: number, feedRate?: number, comment: string = '') {
     super(MoveType.RAPID, x, y, z, feedRate, comment);
   }
 }
 
 export class MoveFeed extends MoveLinearLine {
-
   constructor(x?: number, y?: number, z?: number, feedRate?: number, comment: string = '') {
     super(MoveType.FEED, x, y, z, feedRate, comment);
   }
