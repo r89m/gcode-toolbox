@@ -4,8 +4,9 @@ import {ReplaceableIterator} from "../../util/replaceable.iterator";
 import {Line, LineType} from "../../../../gcode/src/line/line";
 import {MoveFeed, MoveRapid} from "../../../../gcode/src/line/move-linear.line";
 import {CommentLine} from "../../../../gcode/src/line/comment.line";
+import {ParsedLineTransform} from "../parsed-line.transform";
 
-export class RemoveOriginStartTransform implements Transform<Line> {
+export class RemoveOriginStartTransform extends ParsedLineTransform{
     transform(incoming: Line[]): TransformResult<Line> {
         const linesIterator = new ReplaceableIterator(incoming);
 

@@ -3,10 +3,13 @@ import {TransformResult} from "../transform";
 import {ReplaceableIterator} from "../../util/replaceable.iterator";
 import {Line, LineType} from "../../../../gcode/src/line/line";
 import {MoveRapid} from "../../../../gcode/src/line/move-linear.line";
+import {ParsedLineTransform} from "../parsed-line.transform";
 
-export class EnsureFirstRapidHasSensibleFeedrateTransform implements Transform<Line> {
+export class EnsureFirstRapidHasSensibleFeedrateTransform extends ParsedLineTransform{
 
-    constructor(private feedrate:number) {}
+    constructor(private feedrate:number) {
+        super();
+    }
 
     transform(incoming: Line[]): TransformResult<Line> {
 

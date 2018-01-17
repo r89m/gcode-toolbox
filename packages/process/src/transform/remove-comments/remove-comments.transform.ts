@@ -1,7 +1,8 @@
 import {Transform} from "../transform";
 import {TransformResult} from "../transform";
+import {RawLineTransform} from "../raw-line.transform";
 
-export class RemoveCommentsTransform implements Transform<string> {
+export class RemoveCommentsTransform extends RawLineTransform{
 
     private readonly LINE_COMMENT_MARKERS = [
         "//",

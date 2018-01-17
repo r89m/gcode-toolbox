@@ -3,6 +3,7 @@ import {Analysis} from "../analysis/analysis";
 import {Pipeline} from "./pipeline";
 import {Generator} from "../generator/generator";
 import {Line} from "../../../gcode/src/line/line";
+import {ParsedLineTransform} from "../transform/parsed-line.transform";
 
 export class PipelineBuilder {
 
@@ -23,9 +24,11 @@ export class PipelineBuilder {
     }
 }
 
-class AnalysisWrapper implements Transform<Line> {
+class AnalysisWrapper extends ParsedLineTransform {
 
-    constructor(private analysis:Analysis) {}
+    constructor(private analysis:Analysis) {
+        super();
+    }
 
     transform(incoming: Line[]): TransformResult<Line> {
         return {
