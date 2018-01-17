@@ -1,6 +1,4 @@
-import {FileElement} from "../file.element";
-
-export abstract class Command implements FileElement {
+export abstract class Command {
     constructor(public readonly type: CommandType = CommandType.UNKNOWN, public readonly comment?: string) {
     }
 }

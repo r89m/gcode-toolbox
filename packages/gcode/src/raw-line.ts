@@ -1,6 +1,3 @@
-import {FileElement} from "./file.element";
-
-export class RawLine implements FileElement {
-
+export class RawLine {
     constructor(public readonly line: string){}
 }
