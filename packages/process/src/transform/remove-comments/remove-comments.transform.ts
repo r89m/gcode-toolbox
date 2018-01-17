@@ -1,6 +1,5 @@
 import {TransformResult} from "../transform";
 import {RawLineTransform} from "../raw-line.transform";
-import {RawLine} from "../../../../gcode/src/raw-line";
 
 export class RemoveCommentsTransform extends RawLineTransform{
 
@@ -14,26 +13,26 @@ export class RemoveCommentsTransform extends RawLineTransform{
         new BlockCommentBounds("(", ")")
     ];
 
-    transform(incoming: RawLine[]): TransformResult<RawLine> {
+    transform(incoming: string[]): TransformResult<string> {
 
         let blockCommentEndDetector: BlockCommentEndDetector;
-        let outgoingLines: RawLine[] = [];
+        let outgoingLines: string[] = [];
 
         for(let line of incoming) {
             const lineCommentStart = this.detectLineComment(line);
             if (lineCommentStart > -1) {
-                outgoingLines.push(new RawLine(line.line.substr(0, lineCommentStart)));
+                outgoingLines.push(line.substr(0, lineCommentStart));
             } else if (blockCommentEndDetector) {
-                const blockCommentEnd = blockCommentEndDetector.detect(line.line);
+                const blockCommentEnd = blockCommentEndDetector.detect(line);
                 if (blockCommentEnd > -1) {
-                    outgoingLines.push(new RawLine(line.line.substring(blockCommentEnd)));
+                    outgoingLines.push(line.substring(blockCommentEnd));
                     blockCommentEndDetector = undefined;
                 }
             } else {
                 const blockCommentStart = this.detectBlockCommentStart(line);
                 if (blockCommentStart !== undefined) {
-                    let startOfLine = line.line.substr(0, blockCommentStart.index);
-                    let restOfLine = line.line.substring(blockCommentStart.index);
+                    let startOfLine = line.substr(0, blockCommentStart.index);
+                    let restOfLine = line.substring(blockCommentStart.index);
                     let restOfLineToInclude = "";
                     let endOfCommentIndex = blockCommentStart.endDetector.detect(restOfLine);
 
@@ -43,7 +42,7 @@ export class RemoveCommentsTransform extends RawLineTransform{
                     } else {
                         blockCommentEndDetector = blockCommentStart.endDetector;
                     }
-                    outgoingLines.push(new RawLine(startOfLine + restOfLineToInclude));
+                    outgoingLines.push(startOfLine + restOfLineToInclude);
                 } else {
                     outgoingLines.push(line);
                 }
@@ -55,9 +54,9 @@ export class RemoveCommentsTransform extends RawLineTransform{
         }
     }
 
-    protected detectLineComment(line: RawLine): number {
+    protected detectLineComment(line: string): number {
         for (let commentMarker of this.LINE_COMMENT_MARKERS) {
-            const position = line.line.indexOf(commentMarker);
+            const position = line.indexOf(commentMarker);
             if (position > -1) {
                 return position;
             }
@@ -65,10 +64,10 @@ export class RemoveCommentsTransform extends RawLineTransform{
         return -1;
     }
 
-    protected detectBlockCommentStart(line: RawLine): { index: number, endDetector: BlockCommentEndDetector } {
+    protected detectBlockCommentStart(line: string): { index: number, endDetector: BlockCommentEndDetector } {
 
         for (let blockComment of this.BLOCK_COMMENT_BOUNDS) {
-            const index = blockComment.detectStart(line.line);
+            const index = blockComment.detectStart(line);
             if (index > -1) {
                 return {
                     index: index,

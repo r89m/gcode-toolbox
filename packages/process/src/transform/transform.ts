@@ -1,14 +1,14 @@
-import {RawLine} from "../../../gcode/src/raw-line";
 import {Command} from "../../../gcode/src/command/command";
 
-export type FileElement = Command | RawLine
+export class RawLine {}
+export type FileElement = Command | string;
 export type FileElementType = typeof Command | typeof RawLine;
 
-export interface Transform<FileElement> {
+export interface Transform<L extends FileElement> {
 
     getType(): FileElementType;
 
-    transform(incoming: FileElement[]): TransformResult<FileElement>
+    transform(incoming: L[]): TransformResult<L>
 }
 
 export class TransformResult<FileElement> {
