@@ -1,6 +1,6 @@
-import {Line, LineType} from './line';
+import {Command, CommandType} from './command';
 
-abstract class MoveLinearLine extends Line {
+abstract class MoveLinearCommand extends Command {
 
   constructor(public readonly moveType: MoveType,
               public readonly x?: number,
@@ -8,7 +8,7 @@ abstract class MoveLinearLine extends Line {
               public readonly z?: number,
               public readonly feedRate?: number,
               comment?: string) {
-    super(LineType.MOVE_LINEAR, comment);
+    super(CommandType.MOVE_LINEAR, comment);
   }
 
   output(): string {
@@ -44,13 +44,13 @@ abstract class MoveLinearLine extends Line {
   }
 }
 
-export class MoveRapid extends MoveLinearLine {
+export class MoveRapid extends MoveLinearCommand {
   constructor(x?: number, y?: number, z?: number, feedRate?: number, comment: string = '') {
     super(MoveType.RAPID, x, y, z, feedRate, comment);
   }
 }
 
-export class MoveFeed extends MoveLinearLine {
+export class MoveFeed extends MoveLinearCommand {
   constructor(x?: number, y?: number, z?: number, feedRate?: number, comment: string = '') {
     super(MoveType.FEED, x, y, z, feedRate, comment);
   }

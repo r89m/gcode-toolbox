@@ -1,8 +1,8 @@
 import {Transform} from "../transform";
 import {TransformResult} from "../transform";
 import {ReplaceableIterator} from "../../util/replaceable.iterator";
-import {Line, LineType} from "../../../../gcode/src/line/line";
-import {MoveRapid} from "../../../../gcode/src/line/move-linear.line";
+import {Command, CommandType} from "../../../../gcode/src/command/command";
+import {MoveRapid} from "../../../../gcode/src/command/move-linear.command";
 import {ParsedLineTransform} from "../parsed-line.transform";
 
 export class EnsureFirstRapidHasSensibleFeedrateTransform extends ParsedLineTransform{
@@ -11,11 +11,11 @@ export class EnsureFirstRapidHasSensibleFeedrateTransform extends ParsedLineTran
         super();
     }
 
-    transform(incoming: Line[]): TransformResult<Line> {
+    transform(incoming: Command[]): TransformResult<Command> {
 
         const lineIterator = new ReplaceableIterator(incoming);
 
-        let item:IteratorResult<Line>;
+        let item:IteratorResult<Command>;
         while (item = lineIterator.next(), !item.done) {
             const line = item.value;
             if (line instanceof MoveRapid) {

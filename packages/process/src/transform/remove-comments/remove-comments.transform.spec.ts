@@ -11,63 +11,63 @@ describe("Remove Comments Transform", () => {
         let d = new RemoveCommentsTransform();
 
         const input = [
-            "This is a line", "This is another line", "This is a third line"
+            "This is a command", "This is another command", "This is a third command"
         ];
 
-        expect(transform(input)).toEqual(["This is a line", "This is another line", "This is a third line"]);
+        expect(transform(input)).toEqual(["This is a command", "This is another command", "This is a third command"]);
     });
 
     it("should handle cases where comments marked with a semi colon are present", () => {
 
         const input = [
-            "This is the first line", "This line has; a comment", "This line does ; too", "This line doesn't"
+            "This is the first command", "This command has; a comment", "This command does ; too", "This command doesn't"
         ];
 
-        expect(transform(input)).toEqual(["This is the first line", "This line has", "This line does ", "This line doesn't"]);
+        expect(transform(input)).toEqual(["This is the first command", "This command has", "This command does ", "This command doesn't"]);
     });
 
     it("should handle cases where comments marked with a double slash are present", () => {
 
         const input = [
-            "This is the first line", "This line has// a comment", "This line does // too", "This line doesn't"
+            "This is the first command", "This command has// a comment", "This command does // too", "This command doesn't"
         ];
 
-        expect(transform(input)).toEqual(["This is the first line", "This line has", "This line does ", "This line doesn't"]);
+        expect(transform(input)).toEqual(["This is the first command", "This command has", "This command does ", "This command doesn't"]);
     });
 
     it("should handle cases where comments marked with semi colons and double slashes are present", () => {
 
         const input = [
-            "This is the first line", "This line has// a comment", "This line does ; too", "This line doesn't"
+            "This is the first command", "This command has// a comment", "This command does ; too", "This command doesn't"
         ];
 
-        expect(transform(input)).toEqual(["This is the first line", "This line has", "This line does ", "This line doesn't"]);
+        expect(transform(input)).toEqual(["This is the first command", "This command has", "This command does ", "This command doesn't"]);
     });
 
     it("should handle block comments surround by /* and */", () => {
 
         const input = [
-            "This is the first line", "The comment /* starts here", "This line is entirely inside a comment", "This is */ the last line"
+            "This is the first command", "The comment /* starts here", "This command is entirely inside a comment", "This is */ the last command"
         ];
 
-        expect(transform(input)).toEqual(["This is the first line", "The comment ", " the last line"]);
+        expect(transform(input)).toEqual(["This is the first command", "The comment ", " the last command"]);
     });
 
     it("should handle block comments surround by ( and )", () => {
 
         const input = [
-            "This is the first line", "The comment ( starts here", "This line is entirely inside a comment", "This is ) the last line"
+            "This is the first command", "The comment ( starts here", "This command is entirely inside a comment", "This is ) the last command"
         ];
 
-        expect(transform(input)).toEqual(["This is the first line", "The comment ", " the last line"]);
+        expect(transform(input)).toEqual(["This is the first command", "The comment ", " the last command"]);
     });
 
-    it("should handle block comments on one line", () => {
+    it("should handle block comments on one command", () => {
 
         const input = [
-            "This is the first line", "This line has /* a block */ comment", "As does ( this line ) as well", "This line doesn't"
+            "This is the first command", "This command has /* a block */ comment", "As does ( this command ) as well", "This command doesn't"
         ];
 
-        expect(transform(input)).toEqual(["This is the first line", "This line has  comment", "As does  as well", "This line doesn't"]);
+        expect(transform(input)).toEqual(["This is the first command", "This command has  comment", "As does  as well", "This command doesn't"]);
     })
 });

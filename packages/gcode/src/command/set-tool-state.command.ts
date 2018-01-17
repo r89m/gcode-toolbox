@@ -1,9 +1,9 @@
-import {Line, LineType} from './line';
+import {Command, CommandType} from './command';
 
-export class SetToolStateLine extends Line {
+export class SetToolStateCommand extends Command {
 
   constructor(public readonly toolState: number, comments: string = '') {
-    super(LineType.TOOL_STATE, comments);
+    super(CommandType.TOOL_STATE, comments);
   }
 
   output(): string {

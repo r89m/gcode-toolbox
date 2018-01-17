@@ -1,9 +1,9 @@
-import {Line, LineType} from './line';
+import {Command, CommandType} from './command';
 
-export class SetMovementModeLine extends Line {
+export class SetMovementModeCommand extends Command {
 
   constructor(public readonly mode: MovementMode, comment: string = '') {
-    super(LineType.SET_MOVEMENT_MODE, comment);
+    super(CommandType.SET_MOVEMENT_MODE, comment);
   }
 
   output(): string {

@@ -1,6 +1,6 @@
-import {Line} from "../line/line";
+import {Command} from "../command/command";
 
 export interface Writer {
 
-    write(line:Line):string;
+    write(command:Command):string;
 }

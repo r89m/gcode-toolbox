@@ -1,9 +1,9 @@
 import {Writer} from "./writer";
-import {Line} from "../line/line";
+import {Command} from "../command/command";
 
 export class DefaultWriter implements Writer {
 
-    write(line: Line): string {
+    write(command: Command): string {
         return "TODO";
     }
 

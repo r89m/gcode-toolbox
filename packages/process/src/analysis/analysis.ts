@@ -1,5 +1,5 @@
-import {Line} from "../../../gcode/src/line/line";
+import {Command} from "../../../gcode/src/command/command";
 
 export interface Analysis {
-  analyse(incoming: Line[]): any;
+  analyse(incoming: Command[]): any;
 }

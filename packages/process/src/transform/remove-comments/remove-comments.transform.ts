@@ -37,7 +37,7 @@ export class RemoveCommentsTransform extends RawLineTransform{
                     let restOfLineToInclude = "";
                     let endOfCommentIndex = blockCommentStart.endDetector.detect(restOfLine);
 
-                    // Handle the case where a block comment starts and ends on the same line
+                    // Handle the case where a block comment starts and ends on the same command
                     if (endOfCommentIndex > -1) {
                         restOfLineToInclude = restOfLine.substring(endOfCommentIndex);
                     } else {

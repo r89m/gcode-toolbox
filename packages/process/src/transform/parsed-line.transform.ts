@@ -1,8 +1,8 @@
 import {Transform, TransformResult} from "./transform";
-import {Line} from "../../../gcode/src/line/line";
+import {Command} from "../../../gcode/src/command/command";
 
-export abstract class ParsedLineTransform implements Transform<Line> {
+export abstract class ParsedLineTransform implements Transform<Command> {
 
-    abstract transform(incoming: Line[]): TransformResult<Line>
+    abstract transform(incoming: Command[]): TransformResult<Command>
 
 }

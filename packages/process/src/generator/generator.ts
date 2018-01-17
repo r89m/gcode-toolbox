@@ -1,8 +1,8 @@
-import {Line} from "../../../gcode/src/line/line";
+import {Command} from "../../../gcode/src/command/command";
 
 export interface Generator {
 
     supportedExtensions():string[];
 
-    generate(filename: string, input: Blob):Line[];
+    generate(filename: string, input: Blob):Command[];
 }

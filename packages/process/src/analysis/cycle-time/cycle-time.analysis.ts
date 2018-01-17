@@ -1,9 +1,9 @@
 import {Analysis} from '../analysis';
-import {Line} from "../../../../gcode/src/line/line";
+import {Command} from "../../../../gcode/src/command/command";
 
 export class CycleTimeAnalysis implements Analysis {
 
-  analyse(incoming: Line[]): CycleTimeAnalysisResults {
+  analyse(incoming: Command[]): CycleTimeAnalysisResults {
     return {
       rapidDuration: 300,
       feedDuration: 400,

@@ -1,12 +1,12 @@
 import {Parser} from "./parser";
-import {Line} from "../line/line";
-import {UnknownLine} from "../line/unknown.line";
-import {MoveFeed, MoveRapid} from "../line/move-linear.line";
-import {MovementMode, SetMovementModeLine} from "../line/set-movement-mode.line";
-import {Plane, PlaneSelectionLine} from "../line/plane-selection.line";
-import {DwellLine} from "../line/dwell.line";
-import {SpindleDirection, SpindleOffLine, SpindleOnLine} from "../line/spindle.line";
-import {FanOffLine, FanOnLine} from "../line/fan-control.line";
+import {Command} from "../command/command";
+import {UnknownCommand} from "../command/unknown.command";
+import {MoveFeed, MoveRapid} from "../command/move-linear.command";
+import {MovementMode, SetMovementModeCommand} from "../command/set-movement-mode.command";
+import {Plane, PlaneSelectionCommand} from "../command/plane-selection.command";
+import {DwellCommand} from "../command/dwell.command";
+import {SpindleDirection, SpindleOffCommand, SpindleOnCommand} from "../command/spindle.command";
+import {FanOffCommand, FanOnCommand} from "../command/fan-control.command";
 
 const flatMap = require("array.prototype.flatmap");
 
@@ -21,13 +21,13 @@ export class DefaultParser implements Parser {
     private static readonly S_PARSER_PATTERN = new RegExp(".*(S ?([0-9\.]+))", "i");
     private static readonly P_PARSER_PATTERN = new RegExp(".*(P ?([0-9\.]+))", "i");
 
-    parse(lines:string[]): Line[] {
+    parse(lines:string[]): Command[] {
         return flatMap(lines, line => this.parseLine(line));
     }
 
-    protected parseLine(line: string): Line[] {
+    protected parseLine(line: string): Command[] {
 
-        const lines: Line[] = [];
+        const commands: Command[] = [];
 
         let lineElements;
         while(lineElements = DefaultParser.LINE_PARSER_PATTERN.exec(line), lineElements !== null) {
@@ -38,81 +38,81 @@ export class DefaultParser implements Parser {
                 args: lineElements[5],
                 rawLine: line
             };
-            lines.push(this.parseCommand(command));
+            commands.push(this.parseCommand(command));
 
             line = lineElements[7];
         }
 
-        return lines;
+        return commands;
     }
 
-    protected parseCommand(command: CommandElements): Line {
+    protected parseCommand(command: CommandElements): Command {
 
-        const actionLetter = command.letter;
-        const actionNumber = command.number;
-        const actionArgs = command.args;
+        const commandLetter = command.letter;
+        const commandNumber = command.number;
+        const commandArgs = command.args;
 
-        if (actionLetter == "G") {
+        if (commandLetter == "G") {
 
-            switch (actionNumber) {
+            switch (commandNumber) {
                 // Linear Movement
                 case 0:
                 case 1:
-                    const lineConstructor = actionNumber == 0 ? MoveRapid : MoveFeed;
-                    return new lineConstructor(
-                        this.getXValue(actionArgs),
-                        this.getYValue(actionArgs),
-                        this.getZValue(actionArgs),
-                        this.getFValue(actionArgs));
+                    const commandConstructor = commandNumber == 0 ? MoveRapid : MoveFeed;
+                    return new commandConstructor(
+                        this.getXValue(commandArgs),
+                        this.getYValue(commandArgs),
+                        this.getZValue(commandArgs),
+                        this.getFValue(commandArgs));
 
                 case 4:
-                    const seconds = this.getSValue(actionArgs);
+                    const seconds = this.getSValue(commandArgs);
                     let millis;
                     if (seconds !== undefined) {
                         millis = seconds * 1000;
                     } else {
-                        millis = this.getPValue(actionArgs);
+                        millis = this.getPValue(commandArgs);
                     }
-                    return new DwellLine(millis);
+                    return new DwellCommand(millis);
 
                 // Plane Selection
                 case 17:
-                    return new PlaneSelectionLine(Plane.XY);
+                    return new PlaneSelectionCommand(Plane.XY);
                 case 18:
-                    return new PlaneSelectionLine(Plane.ZX);
+                    return new PlaneSelectionCommand(Plane.ZX);
                 case 19:
-                    return new PlaneSelectionLine(Plane.YZ);
+                    return new PlaneSelectionCommand(Plane.YZ);
 
                 // Movement mode
                 case 90:
-                    return new SetMovementModeLine(MovementMode.ABSOLUTE);
+                    return new SetMovementModeCommand(MovementMode.ABSOLUTE);
                 case 91:
-                    return new SetMovementModeLine(MovementMode.RELATIVE);
+                    return new SetMovementModeCommand(MovementMode.RELATIVE);
 
             }
 
-        } else if (actionLetter == "M") {
+        } else if (commandLetter == "M") {
 
-            switch (actionNumber) {
+            switch (commandNumber) {
                 // Spindle control
                 case 3:
-                    return new SpindleOnLine(SpindleDirection.Clockwise, this.getSValue(actionArgs));
+                    return new SpindleOnCommand(SpindleDirection.Clockwise, this.getSValue(commandArgs));
                 case 4:
-                    return new SpindleOnLine(SpindleDirection.AntiClockwise, this.getSValue(actionArgs));
+                    return new SpindleOnCommand(SpindleDirection.AntiClockwise, this.getSValue(commandArgs));
                 case 5:
-                    return new SpindleOffLine();
+                    return new SpindleOffCommand();
 
                 // Fan control
                 case 106:
-                    return new FanOnLine(this.getSValue(actionArgs));
+                    return new FanOnCommand(this.getSValue(commandArgs));
                 case 107:
-                    return new FanOffLine();
+                    return new FanOffCommand();
             }
 
-        } else if (actionLetter == "T") {
+        } else if (commandLetter == "T") {
 
         }
-        return new UnknownLine(command.rawLine);
+        return new UnknownCommand(command.rawLine);
     }
 
     getXValue(args: string): number {

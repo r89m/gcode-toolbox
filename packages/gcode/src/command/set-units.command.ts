@@ -1,9 +1,9 @@
-import {Line, LineType} from './line';
+import {Command, CommandType} from './command';
 
-export class SetUnitsLine extends Line {
+export class SetUnitsCommand extends Command {
 
   constructor(public readonly units: Units, comment: string = '') {
-    super(LineType.SET_UNITS, comment);
+    super(CommandType.SET_UNITS, comment);
   }
 
   output(): string {

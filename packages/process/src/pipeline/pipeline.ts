@@ -1,10 +1,10 @@
 import {Generator} from "../generator/generator";
 import {Transform} from "../transform/transform";
-import {Line} from "../../../gcode/src/line/line";
+import {Command} from "../../../gcode/src/command/command";
 
 export class Pipeline {
 
-    constructor(private generator: Generator, private transforms: Transform<Line | string>[]) {
+    constructor(private generator: Generator, private transforms: Transform<Command | string>[]) {
     }
 
     run(filename:string, source: Blob): void {

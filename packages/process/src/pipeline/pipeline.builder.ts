@@ -2,15 +2,15 @@ import {Transform, TransformResult} from "../transform/transform";
 import {Analysis} from "../analysis/analysis";
 import {Pipeline} from "./pipeline";
 import {Generator} from "../generator/generator";
-import {Line} from "../../../gcode/src/line/line";
+import {Command} from "../../../gcode/src/command/command";
 import {ParsedLineTransform} from "../transform/parsed-line.transform";
 
 export class PipelineBuilder {
 
     private generator: Generator;
-    private transforms: Transform<Line | string>[] = [];
+    private transforms: Transform<Command | string>[] = [];
 
-    transform(transform:Transform<Line | string>): PipelineBuilder {
+    transform(transform:Transform<Command | string>): PipelineBuilder {
         this.transforms.push(transform);
         return this;
     }
@@ -30,7 +30,7 @@ class AnalysisWrapper extends ParsedLineTransform {
         super();
     }
 
-    transform(incoming: Line[]): TransformResult<Line> {
+    transform(incoming: Command[]): TransformResult<Command> {
         return {
             result: incoming,
             status: this.analysis.analyse(incoming)

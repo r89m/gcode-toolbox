@@ -1,10 +1,10 @@
 import {Transform, TransformResult} from '../transform';
-import {Line} from "../../../../gcode/src/line/line";
+import {Command} from "../../../../gcode/src/command/command";
 import {ParsedLineTransform} from "../parsed-line.transform";
 
 export class MinimiseRapidsTransform extends ParsedLineTransform{
 
-  transform(incoming: Line[]): TransformResult<Line> {
+  transform(incoming: Command[]): TransformResult<Command> {
     return {
       result : incoming
     };

@@ -1,15 +1,15 @@
-import {Line} from "../line/line";
+import {Command} from "../command/command";
 import {DefaultParser} from "./default.parser";
-import {MoveFeed, MoveRapid} from "../line/move-linear.line";
-import {MovementMode, SetMovementModeLine} from "../line/set-movement-mode.line";
-import {Plane, PlaneSelectionLine} from "../line/plane-selection.line";
-import {FanOnLine} from "../line/fan-control.line";
+import {MoveFeed, MoveRapid} from "../command/move-linear.command";
+import {MovementMode, SetMovementModeCommand} from "../command/set-movement-mode.command";
+import {Plane, PlaneSelectionCommand} from "../command/plane-selection.command";
+import {FanOnCommand} from "../command/fan-control.command";
 
 describe("Default parser", () => {
 
     const parser = new DefaultParser();
 
-    const parse = function(lines:string[]):Line[] {
+    const parse = function(lines:string[]):Command[] {
         return parser.parse(lines);
     };
 
@@ -29,14 +29,14 @@ describe("Default parser", () => {
             new MoveRapid(0, 0, undefined, 400),
             new MoveFeed(undefined, 50, 20, 800),
             new MoveRapid(20, 30, undefined, 1200),
-            new SetMovementModeLine(MovementMode.RELATIVE),
+            new SetMovementModeCommand(MovementMode.RELATIVE),
             new MoveFeed(10, undefined, 50),
             new MoveFeed(23, 504234.432432432532, 64, 340),
-            new SetMovementModeLine(MovementMode.ABSOLUTE)
+            new SetMovementModeCommand(MovementMode.ABSOLUTE)
         ]);
     });
 
-    it("should be able to handle multiple codes in one line", () => {
+    it("should be able to handle multiple commands in one line", () => {
 
         const lines = [
             "G90 g17 g00 x40 y55",
@@ -45,11 +45,11 @@ describe("Default parser", () => {
         ];
 
         expect(parse(lines)).toEqual([
-            new SetMovementModeLine(MovementMode.ABSOLUTE),
-            new PlaneSelectionLine(Plane.XY),
+            new SetMovementModeCommand(MovementMode.ABSOLUTE),
+            new PlaneSelectionCommand(Plane.XY),
             new MoveRapid(40, 55),
             new MoveFeed(40, 98, undefined, 400),
-            new FanOnLine(123),
+            new FanOnCommand(123),
             new MoveFeed(23, 30, 12, 230)
         ])
     });

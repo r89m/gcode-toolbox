@@ -1,6 +1,6 @@
-import {Line} from "../line/line";
+import {Command} from "../command/command";
 
 export interface Parser {
 
-    parse(lines: string[]): Line[];
+    parse(lines: string[]): Command[];
 }
