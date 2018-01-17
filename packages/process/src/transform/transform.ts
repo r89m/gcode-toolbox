@@ -11,8 +11,8 @@ export interface Transform<L extends FileElement> {
     transform(incoming: L[]): TransformResult<L>
 }
 
-export class TransformResult<FileElement> {
+export class TransformResult<L extends FileElement> {
 
-    readonly result: FileElement[];
+    readonly result: L[];
     readonly status?: any;
 }
