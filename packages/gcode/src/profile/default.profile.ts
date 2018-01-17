@@ -13,6 +13,4 @@ export class DefaultProfile implements Profile {
     getWriter(): Writer {
         return new DefaultWriter();
     }
-
-
 }
