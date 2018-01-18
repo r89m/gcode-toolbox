@@ -1,8 +1,6 @@
-import {Command} from "../../../gcode/src/command/command";
-
-export interface Generator {
+export interface Generator<T> {
 
     supportedExtensions():string[];
 
-    generate(filename: string, input: Blob):Command[];
+    generate(filename: string, input: Buffer):T[];
 }
