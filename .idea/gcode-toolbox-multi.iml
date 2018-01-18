@@ -3,8 +3,18 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/cli/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/gcode/.nyc_output" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/gcode/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/gcode/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/process/.nyc_output" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/process/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/process/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/process/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludePattern pattern="*.js" />
+      <excludePattern pattern=" *.map" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
