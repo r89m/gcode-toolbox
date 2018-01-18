@@ -1,16 +1,18 @@
-import {Transform, TransformResult} from "../transform/transform";
+import {FileElement, Transform, TransformResult} from "../transform/transform";
 import {Analysis} from "../analysis/analysis";
-import {Pipeline} from "./pipeline";
-import {Generator} from "../generator/generator";
+import {DefaultStatusReporter, Pipeline, StatusReporter} from "./pipeline";
 import {Command} from "../../../gcode/src/command/command";
 import {ParsedLineTransform} from "../transform/parsed-line.transform";
+import {Profile} from "../../../gcode/src/profile/profile";
 
 export class PipelineBuilder {
 
-    private generator: Generator;
-    private transforms: Transform<Command | string>[] = [];
+    private transforms: Transform<FileElement>[] = [];
+    private statusReporter: StatusReporter = new DefaultStatusReporter();
 
-    transform(transform:Transform<Command | string>): PipelineBuilder {
+    constructor(private readonly machineProfile: Profile) {}
+
+    transform(transform:Transform<FileElement>): PipelineBuilder {
         this.transforms.push(transform);
         return this;
     }
@@ -19,8 +21,13 @@ export class PipelineBuilder {
         return this.transform(new AnalysisWrapper(analysis));
     }
 
+    report(statusReporter: StatusReporter): PipelineBuilder {
+        this.statusReporter = statusReporter;
+        return this;
+    }
+
     build():Pipeline {
-        return new Pipeline(this.generator, this.transforms);
+        return new Pipeline(this.machineProfile, this.transforms, this.statusReporter);
     }
 }
 
