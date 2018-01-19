@@ -1,7 +1,6 @@
-import {Command} from "../../../gcode/src/command/command";
 import {Generator} from "./generator";
 import {RawLineGenerator} from "./raw-line.generator";
-import {Parser} from "../../../gcode/src/parser/parser";
+import {Command, Parser} from "gcode-toolbox-gcode";
 
 export class ParsedLineGenerator implements Generator<Command> {
 

@@ -1,9 +1,8 @@
 import {ParsedLineGenerator} from "./parsed-line.generator";
-import {Command} from "../../../gcode/src/command/command";
-import {DefaultParser} from "../../../gcode/src/parser/default.parser";
-import {MovementMode, SetMovementModeCommand} from "../../../gcode/src/command/set-movement-mode.command";
-import {Plane, PlaneSelectionCommand} from "../../../gcode/src/command/plane-selection.command";
-import {MoveFeed} from "../../../gcode/src/command/move-linear.command";
+import {
+    Command, DefaultParser, MoveFeed, MovementMode, Plane, PlaneSelectionCommand,
+    SetMovementModeCommand
+} from "gcode-toolbox-gcode";
 
 const fs = require("fs");
 
