@@ -6,7 +6,7 @@
   "author": "Richard Miles",
   "license": "MIT",
   "scripts": {
-    "build": "tsc --outDir dist",
+    "build": "tsc --outDir lib",
     "test": "jasmine-ts src/**/*.spec.ts"
   },
   "bin": {

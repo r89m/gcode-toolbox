@@ -2,12 +2,13 @@
   "name": "gcode-toolbox-gcode",
   "version": "1.0.0",
   "description": "Description",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "author": "Richard Miles",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "tsc --outDir dist",
+    "build": "tsc --outDir lib",
     "test": "nyc jasmine-ts \"src/**/*.spec.ts\""
   },
   "nyc": {

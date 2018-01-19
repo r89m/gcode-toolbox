@@ -1,15 +1,16 @@
 {
-  "name": "gcode-toolbox-multi",
-  "version": "1.0.0",
-  "description": "Description",
-  "main": "index.js",
-  "author": "Richard Miles",
-  "license": "MIT",
   "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "clean": "rimraf packages/**/lib"
+  },
+  "devDependencies": {
+    "lerna": "^2.5.1",
+    "rimraf": "^2.6.2"
+  },
   "workspaces": [
     "packages/*"
-  ],
-  "devDependencies": {
-    "lerna": "^2.5.1"
-  }
+  ]
 }

@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "tsc --outDir dist",
+    "build": "tsc --outDir lib",
     "test": "nyc jasmine-ts \"src/**/*.spec.ts\""
   },
   "nyc": {
@@ -32,5 +32,8 @@
     "jasmine-ts": "^0.2.1",
     "nyc": "^11.4.1",
     "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "gcode-toolbox-gcode": "1.0.0"
   }
 }
