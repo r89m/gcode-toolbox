@@ -1,10 +1,7 @@
-import {Transform} from "../transform";
-import {TransformResult} from "../transform";
-import {ReplaceableIterator} from "../../util/replaceable.iterator";
-import {Command, CommandType} from "../../../../gcode/src/command/command";
-import {MoveFeed, MoveRapid} from "../../../../gcode/src/command/move-linear.command";
-import {CommentCommand} from "../../../../gcode/src/command/comment.command";
-import {ParsedLineTransform} from "../parsed-line.transform";
+import {TransformResult} from "@transform/transform";
+import {ReplaceableIterator} from "@util/replaceable.iterator";
+import {Command, CommandType, CommentCommand, MoveFeed, MoveRapid} from "gcode-toolbox-gcode";
+import {ParsedLineTransform} from "@transform/parsed-line.transform";
 
 export class RemoveOriginStartTransform extends ParsedLineTransform{
     transform(incoming: Command[]): TransformResult<Command> {

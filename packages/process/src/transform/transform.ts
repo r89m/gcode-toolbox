@@ -1,4 +1,4 @@
-import {Command} from "../../../gcode/src/command/command";
+import {Command} from "gcode-toolbox-gcode";
 
 export class RawLine {}
 export type FileElement = Command | string;

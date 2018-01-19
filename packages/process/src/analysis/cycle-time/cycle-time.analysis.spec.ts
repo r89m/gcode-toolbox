@@ -1,8 +1,7 @@
-import {CycleTimeAnalysis, CycleTimeAnalysisResults} from "./cycle-time.analysis";
-import {Plane, PlaneSelectionCommand} from "../../../../gcode/src/command/plane-selection.command";
-import {MovementMode, SetMovementModeCommand} from "../../../../gcode/src/command/set-movement-mode.command";
-import {SpindleDirection, SpindleOnCommand} from "../../../../gcode/src/command/spindle.command";
-import {MoveFeed, MoveRapid} from "../../../../gcode/src/command/move-linear.command";
+import {
+    CycleTimeAnalysis, CycleTimeAnalysisResults, MoveFeed, MovementMode, MoveRapid, Plane, PlaneSelectionCommand,
+    SetMovementModeCommand, SpindleDirection, SpindleOnCommand
+} from "gcode-toolbox-gcode";
 
 describe("Cycle Time Analysis", () => {
 

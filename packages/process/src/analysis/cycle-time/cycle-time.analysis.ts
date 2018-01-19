@@ -1,6 +1,5 @@
 import {Analysis} from '../analysis';
-import {Command} from "../../../../gcode/src/command/command";
-import {MoveFeed, MoveRapid} from "../../../../gcode/src/command/move-linear.command";
+import {Command, MoveFeed, MoveRapid} from "gcode-toolbox-gcode";
 
 const DEFAULT_SETTINGS:MachineSpeedSettings = {
     maxFeedRateX: Infinity,

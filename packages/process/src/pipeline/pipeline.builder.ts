@@ -1,9 +1,8 @@
-import {FileElement, Transform, TransformResult} from "../transform/transform";
-import {Analysis} from "../analysis/analysis";
+import {FileElement, Transform, TransformResult} from "@transform/transform";
+import {Analysis} from "@analysis/analysis";
 import {DefaultStatusReporter, Pipeline, StatusReporter} from "./pipeline";
-import {Command} from "../../../gcode/src/command/command";
-import {ParsedLineTransform} from "../transform/parsed-line.transform";
-import {Profile} from "../../../gcode/src/profile/profile";
+import {ParsedLineTransform} from "@transform/parsed-line.transform";
+import {Command, Profile} from "gcode-toolbox-gcode";
 
 export class PipelineBuilder {
 

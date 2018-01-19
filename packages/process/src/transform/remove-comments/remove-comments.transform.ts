@@ -1,5 +1,5 @@
-import {TransformResult} from "../transform";
-import {RawLineTransform} from "../raw-line.transform";
+import {TransformResult} from "@transform/transform";
+import {RawLineTransform} from "@transform/raw-line.transform";
 
 export class RemoveCommentsTransform extends RawLineTransform{
 

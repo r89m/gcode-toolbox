@@ -1,5 +1,5 @@
+import {Command} from "gcode-toolbox-gcode";
 import {FileElementType, Transform, TransformResult} from "./transform";
-import {Command} from "../../../gcode/src/command/command";
 
 export abstract class ParsedLineTransform implements Transform<Command> {
 

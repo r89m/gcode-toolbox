@@ -1,6 +1,6 @@
-import {Transform, TransformResult} from '../transform';
-import {Command} from "../../../../gcode/src/command/command";
-import {ParsedLineTransform} from "../parsed-line.transform";
+import {Command} from "gcode-toolbox-gcode";
+import {TransformResult} from '@transform/transform';
+import {ParsedLineTransform} from "@transform/parsed-line.transform";
 
 export class MinimiseRapidsTransform extends ParsedLineTransform{
 

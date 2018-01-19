@@ -1,13 +1,7 @@
 import {EnsureFirstRapidHasSensibleFeedrateTransform} from "./ensure-first-rapid-has-sensible-feedrate.transform";
-import {DefaultParser} from "../../../../gcode/src/parser/default.parser";
-import {Command} from "../../../../gcode/src/command/command";
-import {Parser} from "../../../../gcode/src/parser/parser";
-import {MoveFeed, MoveRapid} from "../../../../gcode/src/command/move-linear.command";
-import {MovementMode, SetMovementModeCommand} from "../../../../gcode/src/command/set-movement-mode.command";
+import {Command, MoveFeed, MovementMode, MoveRapid, SetMovementModeCommand} from "gcode-toolbox-gcode";
 
 describe("Ensure first rapid has sensible feedrate Transform", () => {
-
-    const parser:Parser = new DefaultParser();
 
     const transform = function(targetFeedrate:number, lines:Command[]):Command[] {
 

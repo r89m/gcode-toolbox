@@ -1,6 +1,5 @@
-import {FileElement, RawLine, Transform} from "../transform/transform";
-import {Command} from "../../../gcode/src/command/command";
-import {Profile} from "../../../gcode/src/profile/profile";
+import {FileElement, RawLine, Transform} from "@transform/transform";
+import {Command, Profile} from "gcode-toolbox-gcode";
 
 export class Pipeline {
 

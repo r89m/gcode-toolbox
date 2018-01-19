@@ -1,8 +1,7 @@
+import {DefaultProfile, MoveFeed, MoveRapid} from "gcode-toolbox-gcode";
 import {StatusReporter} from "./pipeline";
-import {DefaultProfile} from "../../../gcode/src/profile/default.profile";
 import {PipelineBuilder} from "./pipeline.builder";
 import {CycleTimeAnalysis} from "../analysis/cycle-time/cycle-time.analysis";
-import {MoveFeed, MoveRapid} from "../../../gcode/src/command/move-linear.command";
 
 describe("Pipeline Test", () => {
 
