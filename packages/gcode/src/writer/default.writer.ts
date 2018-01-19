@@ -1,5 +1,5 @@
 import {Writer} from "./writer";
-import {Command} from "../command/command";
+import {Command} from "@command/command";
 
 export class DefaultWriter implements Writer {
 

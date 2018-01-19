@@ -1,12 +1,12 @@
 import {Parser} from "./parser";
-import {Command} from "../command/command";
-import {UnknownCommand} from "../command/unknown.command";
-import {MoveFeed, MoveRapid} from "../command/move-linear.command";
-import {MovementMode, SetMovementModeCommand} from "../command/set-movement-mode.command";
-import {Plane, PlaneSelectionCommand} from "../command/plane-selection.command";
-import {DwellCommand} from "../command/dwell.command";
-import {SpindleDirection, SpindleOffCommand, SpindleOnCommand} from "../command/spindle.command";
-import {FanOffCommand, FanOnCommand} from "../command/fan-control.command";
+import {Command} from "@command/command";
+import {DwellCommand} from "@command/dwell.command";
+import {FanOffCommand, FanOnCommand} from "@command/fan-control.command";
+import {MoveFeed, MoveRapid} from "@command/move-linear.command";
+import {MovementMode, SetMovementModeCommand} from "@command/set-movement-mode.command";
+import {Plane, PlaneSelectionCommand} from "@command/plane-selection.command";
+import {SpindleDirection, SpindleOffCommand, SpindleOnCommand} from "@command/spindle.command";
+import {UnknownCommand} from "@command/unknown.command";
 
 const flatMap = require("array.prototype.flatmap");
 

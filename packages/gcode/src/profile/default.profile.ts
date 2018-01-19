@@ -1,8 +1,8 @@
 import {Profile} from "./profile";
-import {Parser} from "../parser/parser";
-import {Writer} from "../writer/writer";
-import {DefaultParser} from "../parser/default.parser";
-import {DefaultWriter} from "../writer/default.writer";
+import {DefaultWriter} from "@writer/default.writer";
+import {DefaultParser} from "@parser/default.parser";
+import {Parser} from "@parser/parser";
+import {Writer} from "@writer/writer";
 
 export class DefaultProfile implements Profile {
 

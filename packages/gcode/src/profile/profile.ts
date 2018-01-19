@@ -1,5 +1,5 @@
-import {Parser} from "../parser/parser";
-import {Writer} from "../writer/writer";
+import {Parser} from "@parser/parser";
+import {Writer} from "@writer/writer";
 
 export interface Profile {
 

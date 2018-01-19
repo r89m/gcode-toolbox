@@ -1,9 +1,9 @@
-import {Command} from "../command/command";
+import {Command} from "@command/command";
 import {DefaultParser} from "./default.parser";
-import {MoveFeed, MoveRapid} from "../command/move-linear.command";
-import {MovementMode, SetMovementModeCommand} from "../command/set-movement-mode.command";
-import {Plane, PlaneSelectionCommand} from "../command/plane-selection.command";
-import {FanOnCommand} from "../command/fan-control.command";
+import {FanOnCommand} from "@command/fan-control.command";
+import {MoveFeed, MoveRapid} from "@command/move-linear.command";
+import {MovementMode, SetMovementModeCommand} from "@command/set-movement-mode.command";
+import {Plane, PlaneSelectionCommand} from "@command/plane-selection.command";
 
 describe("Default parser", () => {
 

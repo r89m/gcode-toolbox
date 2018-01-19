@@ -6,5 +6,13 @@
   "exclude": [
     "node_modules",
     "**/*.spec.ts"
-  ]
+  ],
+  "compilerOptions": {
+    "paths": {
+      "@command/*": ["gcode/src/command/*"],
+      "@parser/*": ["gcode/src/parser/*"],
+      "@profile/*": ["gcode/src/profile/*"],
+      "@writer/*": ["gcode/src/writer/*"]
+    }
+  }
 }
