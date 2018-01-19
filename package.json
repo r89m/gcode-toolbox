@@ -3,6 +3,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
+    "lerna": "lerna",
     "test": "lerna run test",
     "clean": "rimraf packages/**/lib"
   },
