@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./packages",
     "paths": {
-      "gcode-toolbox-*": ["./*/src"]
+      "gcode-toolbox-*": ["*/src/"]
     }
   }
 }
