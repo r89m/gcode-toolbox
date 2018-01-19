@@ -1,9 +1,7 @@
-import {Transform} from "../transform";
-import {TransformResult} from "../transform";
-import {ReplaceableIterator} from "../../util/replaceable.iterator";
-import {Command, CommandType} from "../../../../gcode/src/command/command";
-import {MoveRapid} from "../../../../gcode/src/command/move-linear.command";
-import {ParsedLineTransform} from "../parsed-line.transform";
+import {Command, CommandType, MoveRapid} from "gcode-toolbox-gcode";
+import {TransformResult} from "@transform/transform";
+import {ParsedLineTransform} from "@transform/parsed-line.transform";
+import {ReplaceableIterator} from "@util/replaceable.iterator";
 
 export class EnsureFirstRapidHasSensibleFeedrateTransform extends ParsedLineTransform{
 

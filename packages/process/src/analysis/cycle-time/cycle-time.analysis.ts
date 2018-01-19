@@ -1,4 +1,4 @@
-import {Analysis} from '../analysis';
+import {Analysis} from '@analysis/analysis';
 import {Command, MoveFeed, MoveRapid} from "gcode-toolbox-gcode";
 
 const DEFAULT_SETTINGS:MachineSpeedSettings = {
